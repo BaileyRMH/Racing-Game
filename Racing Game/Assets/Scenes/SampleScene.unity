@@ -709,10 +709,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677a350789d7b76438e4f01e4b8f25e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
-  maxSpeed: 500
+  moveSpeed: 75
+  maxSpeed: 350
   reverseSpeed: 5
-  turnSpeed: 100
+  turnSpeed: 150
   brakeForce: 2
   steeringInput: 0
   rb: {fileID: 977433829}
