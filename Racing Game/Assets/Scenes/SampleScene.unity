@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 87508218}
   - component: {fileID: 87508217}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +695,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 2
 --- !u!114 &977433830
 MonoBehaviour:
@@ -706,13 +706,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 977433824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2db8b4638435c40ace32c29b69eb8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 677a350789d7b76438e4f01e4b8f25e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 0}
-  explosionPosition: {x: 0, y: 0, z: 0}
-  radius: 0
-  explosionForce: 400
+  moveSpeed: 100
+  maxSpeed: 500
+  reverseSpeed: 5
+  turnSpeed: 100
+  brakeForce: 2
+  steeringInput: 0
+  rb: {fileID: 977433829}
 --- !u!1 &1074791491
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +729,7 @@ GameObject:
   - component: {fileID: 1074791493}
   - component: {fileID: 1074791492}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,7 +834,7 @@ GameObject:
   - component: {fileID: 1373760275}
   - component: {fileID: 1373760274}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1042,7 +1045,7 @@ GameObject:
   - component: {fileID: 1899430788}
   - component: {fileID: 1899430787}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
