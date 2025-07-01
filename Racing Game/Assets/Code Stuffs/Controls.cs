@@ -101,7 +101,8 @@ public class Controls : MonoBehaviour
         }
 
         //transform.Translate(velocity * Time.deltaTime, Space.World);
-        rb.AddForce(velocity * Time.deltaTime);
+        rb.AddForce(velocity * Time.deltaTime, ForceMode.Impulse);
+        //rb.AddExplosionForce(1000f, this.transform.position, 10);
 
         float turn = steeringInput * turnSpeed * Time.deltaTime;
         transform.Rotate(0f, turn, 0f);
