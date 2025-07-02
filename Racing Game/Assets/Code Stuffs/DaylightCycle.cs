@@ -6,33 +6,50 @@ using UnityEngine;
 public class DaylightCycle : MonoBehaviour
 {
 
-    public GameObject Light;
+    //public GameObject Light;
 
-    [Header("Speed Of Rotation")]
-    public float rotationSpeed;
+    //[Header("How Many Degrees /s")]
+    //public float iteration;
+    //public bool canRotate;
 
-    [Header("How Long Is One Day/Night Cycle?")]
-    public float howManyHours;
-    public float howManyMinutes;
-    public float howManySeconds;
+    //[Header("How Long Is One Day/Night Cycle?")]
+    //public float howManyHours;
+    //public float howManyMinutes;
+    //public float howManySeconds;
 
-    [Header("Total Time")]
-    public float cycleTime;
+    //[Header("Total Time")]
+    //public float cycleTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cycleTime = (howManyHours * 60 * 60) + (howManyMinutes * 60) + howManySeconds;
-        rotationSpeed = 360 / cycleTime;
-    }
+    //void Start()
+    //{
+    //    cycleTime = (howManyHours * 60 * 60) + (howManyMinutes * 60) + howManySeconds;
+    //    iteration = cycleTime / 360;
+    //}
 
-    // Update is called once per frame
+    //void Update()
+    //{
+    //    Debug.Log(canRotate);
+    //    if (canRotate)
+    //    {
+    //        Light.transform.Rotate(Vector3.right, iteration);
+    //        canRotate = false;
+    //    }
+    //    Invoke("ResetState", 1f);
+    //}
+
+
+    //void ResetState()
+    //{
+    //    canRotate = true;
+    //    Debug.Log("Resetted your states fr");
+    //}
+
+    public float rotationAmount = 1f; // Amount to rotate in degrees
+
     void Update()
     {
-        Light.transform.Rotate(Vector3.right, rotationSpeed);
+        // Rotate the object around its local X axis
+        transform.Rotate(Vector3.right * rotationAmount * Time.deltaTime);
     }
-
-
-
 
 }
