@@ -58,20 +58,22 @@ public class Controls : MonoBehaviour
     {
         bool joystickConnected = Joystick.current != null;
         float joyThrottle = 0f;
+        float joyBrake = 0f;
 
         if (joystickConnected)
         {
             float rawJoyThrottle = joystickThrottle.ReadValue<float>();
-
+            float rawJoyBrake = joystickBrake.ReadValue<float>();
             // Convert to usable range and apply deadzones
             joyThrottle = rawJoyThrottle < 0.99f ? Mathf.Clamp01(1f - rawJoyThrottle) : 0f;
             if (joyThrottle < 0.05f) joyThrottle = 0f;
+            joyBrake = rawJoyBrake < 0.99f ? 1f - rawJoyBrake : 0f;
 
         }
 
 
-        float rawJoyBrake = joystickBrake.ReadValue<float>();
-        float joyBrake = rawJoyBrake < 0.99f ? 1f - rawJoyBrake : 0f;
+       
+        
 
         float keyThrottle = keyboardThrottle.ReadValue<float>();
         float keyBrake = keyboardBrake.ReadValue<float>();
@@ -100,6 +102,7 @@ public class Controls : MonoBehaviour
             velocity = moveDirection;
         }
 
+
         //transform.Translate(velocity * Time.deltaTime, Space.World);
         rb.AddForce(velocity * Time.deltaTime, ForceMode.Impulse);
         //rb.AddExplosionForce(1000f, this.transform.position, 10);
@@ -109,8 +112,9 @@ public class Controls : MonoBehaviour
 
         Debug.Log(currentControlScheme);
 
-        //Debug.Log(velocity);
-        Debug.Log(throttleInput);
+        Debug.Log(velocity);
+        //Debug.Log(throttleInput);
+        //Debug.Log(brakeInput);
         //Debug.Log(brakeInput);
 
     }
