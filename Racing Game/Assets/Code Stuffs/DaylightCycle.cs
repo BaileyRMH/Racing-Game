@@ -44,12 +44,19 @@ public class DaylightCycle : MonoBehaviour
     //    Debug.Log("Resetted your states fr");
     //}
 
+
+    public float rotation;
     public float rotationAmount = 1f; // Amount to rotate in degrees
 
     void Update()
     {
         // Rotate the object around its local X axis
+        rotation = this.transform.rotation.x;
         transform.Rotate(Vector3.right * rotationAmount * Time.deltaTime);
+        if (rotation == 1)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
 }
