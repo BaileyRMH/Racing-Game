@@ -178,7 +178,6 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         m_Player_BrakeReverse = m_Player.FindAction("Brake / Reverse", throwIfNotFound: true);
         m_Player_Steering = m_Player.FindAction("Steering", throwIfNotFound: true);
     }
-
     public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
