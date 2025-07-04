@@ -12,6 +12,9 @@ public class Controls : MonoBehaviour
     public float reverseSpeed;
     public float turnSpeed;
     public float brakeForce;
+    public float boostSpeed;
+
+    public bool canDash;
 
     public float steeringInput;
     private Vector3 velocity = Vector3.zero;
@@ -21,6 +24,7 @@ public class Controls : MonoBehaviour
     private InputAction joystickBrake;
     private InputAction keyboardBrake;
     private InputAction steeringAction;
+    private InputAction BOOSTActionKey;
 
     public Rigidbody rb;
 
@@ -31,6 +35,8 @@ public class Controls : MonoBehaviour
         
         joystickBrake = new InputAction(type: InputActionType.Value, binding: "<Joystick>/rz");
         keyboardBrake = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/s");
+
+        BOOSTActionKey = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/shift");
 
         steeringAction = new InputAction(type: InputActionType.Value);
         steeringAction.AddBinding("<Joystick>/stick/x");
@@ -43,6 +49,7 @@ public class Controls : MonoBehaviour
         joystickBrake.Enable();
         keyboardBrake.Enable();
         steeringAction.Enable();
+        BOOSTActionKey.Enable();
     }
 
     private void OnDisable()
@@ -52,7 +59,13 @@ public class Controls : MonoBehaviour
         joystickBrake.Disable();
         keyboardBrake.Disable();
         steeringAction.Disable();
+        BOOSTActionKey.Disable();
     }
+    private void Start()
+    {
+        canDash = true;
+    }
+
 
     private void Update()
     {
@@ -68,7 +81,6 @@ public class Controls : MonoBehaviour
             joyThrottle = rawJoyThrottle < 0.99f ? Mathf.Clamp01(1f - rawJoyThrottle) : 0f;
             if (joyThrottle < 0.05f) joyThrottle = 0f;
             joyBrake = rawJoyBrake < 0.99f ? 1f - rawJoyBrake : 0f;
-
         }
 
 
@@ -77,6 +89,7 @@ public class Controls : MonoBehaviour
 
         float keyThrottle = keyboardThrottle.ReadValue<float>();
         float keyBrake = keyboardBrake.ReadValue<float>();
+        float keyBoost = BOOSTActionKey.ReadValue<float>(); 
 
         float throttleInput = Mathf.Max(joyThrottle, keyThrottle);
         float brakeInput = Mathf.Max(joyBrake, keyBrake);
@@ -96,29 +109,36 @@ public class Controls : MonoBehaviour
         {
             velocity = Vector3.Lerp(velocity, Vector3.zero, brakeForce * Time.deltaTime);
         }
-
         if (moveDirection != Vector3.zero)
         {
             velocity = moveDirection;
         }
 
+        if (keyBoost > 0 && canDash)
+        {
+            rb.AddForce(this.gameObject.transform.forward * boostSpeed, ForceMode.Impulse);
+            canDash = false;
+            Invoke("ResetDash", 3f);
+        }
 
-        //transform.Translate(velocity * Time.deltaTime, Space.World);
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+
+        }
+
+        Debug.Log(rb.velocity.magnitude);
         rb.AddForce(velocity * Time.deltaTime, ForceMode.Impulse);
-        //rb.AddExplosionForce(1000f, this.transform.position, 10);
 
         float turn = steeringInput * turnSpeed * Time.deltaTime;
         transform.Rotate(0f, turn, 0f);
 
-        Debug.Log(currentControlScheme);
-
-        Debug.Log(velocity);
-        //Debug.Log(throttleInput);
-        //Debug.Log(brakeInput);
-        //Debug.Log(brakeInput);
 
     }
 
 
+    void ResetDash()
+    {
+        canDash = true;
+    }
 
 }

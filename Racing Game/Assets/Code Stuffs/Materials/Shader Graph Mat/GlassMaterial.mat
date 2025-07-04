@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.9
+    - _Alpha: 0.045
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -69,12 +69,12 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _Metallic: 0.2
-    - _Normal_Strength: 1
+    - _Metallic: 0
+    - _Normal_Strength: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.529
+    - _Smoothness: 0
     - _SrcBlend: 1
     - _Surface: 1
     - _WorkflowMode: 1
