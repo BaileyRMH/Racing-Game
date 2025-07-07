@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Work
+  m_Name: Plink
   m_Shader: {fileID: -6465566751694194690, guid: a8065629edc6d3d4dab4cd0cf01cfab4,
     type: 3}
   m_Parent: {fileID: 0}
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: 1e0d95047a2413243a401be52f71c5af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0898628ed00b4aa488a71977867c3de7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -44,12 +44,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 5
+    - _Speed: 10
     m_Colors:
     - _Colour: {r: 1, g: 1, b: 1, a: 0}
-    - _Tiling: {r: 10, g: 10, b: 0, a: 0}
+    - _Tiling: {r: 54, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1723002876074433333
+--- !u!114 &7759804631901606176
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
