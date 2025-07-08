@@ -12,7 +12,7 @@ public class ButtonScript : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(0);
     }
 
     public void EndGame()
