@@ -121,12 +121,12 @@ public class Controls : MonoBehaviour
             Invoke("ResetDash", 3f);
         }
 
-        if (rb.velocity.magnitude > maxSpeed)
+        if (rb.linearVelocity.magnitude > maxSpeed)
         {
 
         }
 
-        Debug.Log(rb.velocity.magnitude);
+        Debug.Log(rb.linearVelocity.magnitude);
         rb.AddForce(velocity * Time.deltaTime, ForceMode.Impulse);
 
         float turn = steeringInput * turnSpeed * Time.deltaTime;
